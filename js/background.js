@@ -1,5 +1,5 @@
 chrome.app.runtime.onLaunched.addListener(function() {
-  chrome.app.window.create("elmnts_window.html",
+  chrome.app.window.create("../elmnts_window.html",
     {  frame: "none",
        id: "elmntsWinID",
        bounds: {

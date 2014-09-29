@@ -5,9 +5,9 @@
   "version": "1.0",
   "app": {
     "background": {
-      "scripts": ["background.js"]
+      "scripts": ["js/background.js"]
     }
   },
   "permissions" : ["webview"],
-  "icons": { "16": "elmnts-16.png", "128": "elmnts-128.png" }
+  "icons": { "16": "img/elmnts-16.png", "128": "img/elmnts-128.png" }
 }

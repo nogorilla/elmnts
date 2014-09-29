@@ -2,10 +2,10 @@ function initSoundButton(buttonId, sound) {
   var elem = document.getElementById(buttonId);
   if (!elem)
     return;
-  elem.src = sound + "-stop.png";
+  elem.src = "../img/" + sound + "-stop.png";
 
-  var currentSound = new Audio(sound + ".mp3");
-  var vol = document.getElementById(sound+ "-vol");
+  var currentSound = new Audio("../mp3/"../img/" + " + sound + ".mp3");
+  var vol = document.getElementById(sound + "-vol");
   vol.style.visibility='hidden';
   elem.onclick = function() {
       if (currentSound.duration > 0 && !currentSound.paused) {
@@ -13,14 +13,14 @@ function initSoundButton(buttonId, sound) {
         console.log("Stopping: " + sound);
         elem.textContent = "Play " + sound;
         vol.style.visibility='hidden';
-        elem.src = sound + "-stop.png";
+        elem.src = "../img/" + sound + "-stop.png";
         currentSound.pause();
       } else{
         //sound started
         console.log("Playing: " + sound + " at " + currentSound.volume);
         elem.textContent = "Stop " + sound;
         vol.style.visibility='visible';
-        elem.src = sound + "-play.png";
+        elem.src = "../img/" + sound + "-play.png";
         currentSound.play();
         var loop = setInterval(
           function() {
@@ -66,15 +66,15 @@ function initTitlebar(checkboxId, titlebar_name, titlebar_icon_url, titlebar_tex
   // }
 
   addTitlebar(titlebar_name, titlebar_icon_url, titlebar_text);
-  
+
 }
 
-window.onfocus = function() { 
+window.onfocus = function() {
   console.log("focus");
   focusTitlebars(true);
 };
 
-window.onblur = function() { 
+window.onblur = function() {
   console.log("blur");
   focusTitlebars(false);
 };
@@ -93,7 +93,7 @@ window.onload = function() {
   initSoundButton("forest-button", "forest");
 
   initDonate("donateButton");
-  
+
   updateContentStyle();
 };
 
@@ -106,12 +106,12 @@ function initDonate(donateId) {
     google.payments.inapp.buy({
     parameters: {env: 'prod'},
     jwt: "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIwMjExODYxNTc3NTI0NTkzODUyOCIsImF1ZCI6Ikdvb2dsZSIsInR5cCI6Imdvb2dsZS9wYXltZW50cy9pbmFwcC9pdGVtL3YxIiwiaWF0IjoxMzg3MTc1NTU5LCJleHAiOjEzODcyNjE5NTksInJlcXVlc3QiOnsiY3VycmVuY3lDb2RlIjoiVVNEIiwicHJpY2UiOiIuOTkiLCJuYW1lIjoiRWxtbnRzIERvbmF0aW9uICIsInNlbGxlckRhdGEiOiJzb21lIG9wYXF1ZSBkYXRhIiwiZGVzY3JpcHRpb24iOiJUaGFua3MgZm9yIHlvdXIgYXBwcmVjaWF0aW9uLCB5b3VcdTAwMjdyZSBhd2Vzb21lISJ9fQ.m3B45CBQJbs5v0mLCJjay7qFG1Xx3_t8AfMUAEiIohI",
-    success: function() { 
+    success: function() {
       // window.alert('Thank you for donating!');
       console.log("donate succeeded");
     },
     failure: function() { }
   })
 };
- 
+
 }
