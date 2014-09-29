@@ -10,25 +10,25 @@ function initSoundButton(buttonId, sound) {
   elem.onclick = function() {
       if (currentSound.duration > 0 && !currentSound.paused) {
         //sound stopped
-        console.log("Stopping: " + sound);
+        // console.log("Stopping: " + sound);
         elem.textContent = "Play " + sound;
         vol.style.visibility='hidden';
         elem.src = "../img/" + sound + "-stop.png";
         currentSound.pause();
       } else{
         //sound started
-        console.log("Playing: " + sound + " at " + currentSound.volume);
+        // console.log("Playing: " + sound + " at " + currentSound.volume);
         elem.textContent = "Stop " + sound;
         vol.style.visibility='visible';
         elem.src = "../img/" + sound + "-play.png";
         currentSound.play();
         var loop = setInterval(
           function() {
-            console.log(currentSound.currentTime);
+            // console.log(currentSound.currentTime);
             currentSound.volume = vol.value/100;
             if (currentSound.currentTime > currentSound.duration - 1 ) {
               currentSound.currentTime = 0;
-              console.log("Restarted: " + sound);
+              // console.log("Restarted: " + sound);
             }
             if (currentSound.paused) {
               clearInterval(loop);
@@ -70,12 +70,12 @@ function initTitlebar(checkboxId, titlebar_name, titlebar_icon_url, titlebar_tex
 }
 
 window.onfocus = function() {
-  console.log("focus");
+  // console.log("focus");
   focusTitlebars(true);
 };
 
 window.onblur = function() {
-  console.log("blur");
+  // console.log("blur");
   focusTitlebars(false);
 };
 
@@ -92,7 +92,7 @@ window.onload = function() {
   initSoundButton("river-button", "river");
   initSoundButton("forest-button", "forest");
 
-  initDonate("donateButton");
+  // initDonate("donateButton");
 
   var webview = document.getElementById("sharewebview");
   webview.style.visibility='hidden';
@@ -108,12 +108,12 @@ window.onload = function() {
           function() {
             if (navigator.onLine) {
             // Online
-            console.log("user has internet");
+            // console.log("user has internet");
             webview.style.visibility='visible';
               clearInterval(testOnline);
             } else {
             // Offline
-            console.log("user is Offline");
+            // console.log("user is Offline");
             }
             webview.reload();
 

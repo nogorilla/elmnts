@@ -10,25 +10,25 @@ function initSoundButton(buttonId, sound) {
   elem.onclick = function() {
       if (currentSound.duration > 0 && !currentSound.paused) {
         //sound stopped
-        console.log("Stopping: " + sound);
+        // console.log("Stopping: " + sound);
         elem.textContent = "Play " + sound;
         vol.style.visibility='hidden';
         elem.src = "../img/" + sound + "-stop.png";
         currentSound.pause();
       } else{
         //sound started
-        console.log("Playing: " + sound + " at " + currentSound.volume);
+        // console.log("Playing: " + sound + " at " + currentSound.volume);
         elem.textContent = "Stop " + sound;
         vol.style.visibility='visible';
         elem.src = "../img/" + sound + "-play.png";
         currentSound.play();
         var loop = setInterval(
           function() {
-            console.log(currentSound.currentTime);
+            // console.log(currentSound.currentTime);
             currentSound.volume = vol.value/100;
             if (currentSound.currentTime > currentSound.duration - 1 ) {
               currentSound.currentTime = 0;
-              console.log("Restarted: " + sound);
+              // console.log("Restarted: " + sound);
             }
             if (currentSound.paused) {
               clearInterval(loop);
@@ -70,12 +70,12 @@ function initTitlebar(checkboxId, titlebar_name, titlebar_icon_url, titlebar_tex
 }
 
 window.onfocus = function() {
-  console.log("focus");
+  // console.log("focus");
   focusTitlebars(true);
 };
 
 window.onblur = function() {
-  console.log("blur");
+  // console.log("blur");
   focusTitlebars(false);
 };
 
@@ -102,13 +102,13 @@ function initDonate(donateId) {
   if (!elem)
     return;
   elem.onclick = function() {
-    console.log("donate pressed");
+    // console.log("donate pressed");
     google.payments.inapp.buy({
     parameters: {env: 'prod'},
     jwt: "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIwMjExODYxNTc3NTI0NTkzODUyOCIsImF1ZCI6Ikdvb2dsZSIsInR5cCI6Imdvb2dsZS9wYXltZW50cy9pbmFwcC9pdGVtL3YxIiwiaWF0IjoxMzg3MTc1NTU5LCJleHAiOjEzODcyNjE5NTksInJlcXVlc3QiOnsiY3VycmVuY3lDb2RlIjoiVVNEIiwicHJpY2UiOiIuOTkiLCJuYW1lIjoiRWxtbnRzIERvbmF0aW9uICIsInNlbGxlckRhdGEiOiJzb21lIG9wYXF1ZSBkYXRhIiwiZGVzY3JpcHRpb24iOiJUaGFua3MgZm9yIHlvdXIgYXBwcmVjaWF0aW9uLCB5b3VcdTAwMjdyZSBhd2Vzb21lISJ9fQ.m3B45CBQJbs5v0mLCJjay7qFG1Xx3_t8AfMUAEiIohI",
     success: function() {
       // window.alert('Thank you for donating!');
-      console.log("donate succeeded");
+      // console.log("donate succeeded");
     },
     failure: function() { }
   })
